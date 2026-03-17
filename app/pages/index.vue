@@ -1,10 +1,9 @@
 <template>
-  <div>
+  <div class="h-32">
     {{ loggedIn ? `Logged in as ${user.atlassianId}` : 'Not logged in' }}
-    <br/>
     session id: {{ session }}
     <div>
-      <a href="/api/auth/login">Login with Atlassian</a>
+      <NuxtLink href="/api/auth/login">Login with Atlassian</NuxtLink>
     </div>
     <div>
       <button type="button" @click="clear()">Logout</button>
