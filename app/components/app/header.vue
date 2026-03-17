@@ -10,4 +10,6 @@
 
 <script setup lang="ts">
 const { clear } = useUserSession();
+
+// TODO: show logout btn ONLY if user is logged in!
 </script>
