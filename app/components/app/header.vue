@@ -3,13 +3,11 @@
     <template #title>Jira Poker</template>
     <template #right>
       <UColorModeButton title="Toggle Theme" />
-      <UButton label="Logout" @click="clear()">Logout</UButton>
+      <UButton v-if="loggedIn" label="Logout" @click="clear()" />
     </template>
   </UHeader>
 </template>
 
 <script setup lang="ts">
-const { clear } = useUserSession();
-
-// TODO: show logout btn ONLY if user is logged in!
+const { clear, loggedIn } = useUserSession();
 </script>
