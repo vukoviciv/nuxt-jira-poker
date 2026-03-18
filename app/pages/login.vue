@@ -18,8 +18,6 @@
 import * as z from 'zod';
 import type { FormSubmitEvent, AuthFormField } from '@nuxt/ui';
 
-const toast = useToast();
-
 const fields: AuthFormField[] = [
   {
     name: 'email',
@@ -47,7 +45,8 @@ const providers = [
     label: 'Atlassian',
     icon: 'i-simple-icons-atlassian',
     onClick: () => {
-      toast.add({ title: 'Atlassian', description: 'Login with Atlassian' });
+      window.location.href = '/auth/atlassian';
+      // The server will handle the redirect to the provider and back to the app
     },
   },
 ];

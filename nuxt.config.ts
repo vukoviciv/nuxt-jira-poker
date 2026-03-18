@@ -4,8 +4,12 @@ export default defineNuxtConfig({
   modules: ['@nuxt/eslint', 'nuxt-auth-utils', '@nuxt/ui'],
   css: ['@/assets/css/main.css'],
   runtimeConfig: {
-    atlassianClientId: '',
-    atlassianClientSecret: '',
-    atlassianCallbackUrl: '',
+    oauth: {
+      atlassian: {
+        clientId: '',
+        clientSecret: '',
+        redirectURL: '',
+      },
+    },
   },
 });
