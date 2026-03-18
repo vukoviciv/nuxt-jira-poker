@@ -18,3 +18,9 @@ export default defineOAuthAtlassianEventHandler({
     return sendRedirect(event, '/');
   },
 });
+
+// TODO: move this file to server/modules/auth/routes/auth/ and add
+//   nitro: {
+//     scanDirs: ['server/modules'],
+//   }
+// to defineNuxtConfig() once the transition to modular monolith starts
