@@ -1,7 +1,5 @@
 export default defineOAuthAtlassianEventHandler({
-  async onSuccess(event, { user, tokens }) {
-    console.log('tokens shape:', Object.keys(tokens));
-
+  async onSuccess(event, { user }) {
     await setUserSession(event, {
       user: {
         atlassianId: user.account_id,

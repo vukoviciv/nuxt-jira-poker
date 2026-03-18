@@ -9,6 +9,12 @@ export default defineNuxtConfig({
         clientId: '',
         clientSecret: '',
         redirectURL: '',
+        scope: [
+          'read:jira-work',
+          'write:jira-work',
+          'read:jira-user',
+          'offline_access',
+        ],
       },
     },
   },
