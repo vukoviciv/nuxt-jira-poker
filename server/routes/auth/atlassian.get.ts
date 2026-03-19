@@ -1,5 +1,8 @@
+import type { AtlassianRawTokens } from '../../modules/auth/auth.types';
+
 export default defineOAuthAtlassianEventHandler({
-  async onSuccess(event, { user }) {
+  async onSuccess(event, { user, tokens }) {
+    const t = tokens as unknown as AtlassianRawTokens;
     await setUserSession(event, {
       user: {
         atlassianId: user.account_id,
@@ -7,8 +10,13 @@ export default defineOAuthAtlassianEventHandler({
         email: user.email,
         avatar: user.picture,
       },
-      // TODO: add accessToken and refreshToken to the session
+      secure: {
+        accessToken: t.access_token,
+        refreshToken: t.refresh_token,
+        tokenExpiresAt: Date.now() + (t.expires_in ?? 3600) * 1000,
+      },
     });
+
     return sendRedirect(event, '/');
   },
   onError(event, error) {
@@ -16,9 +24,3 @@ export default defineOAuthAtlassianEventHandler({
     return sendRedirect(event, '/');
   },
 });
-
-// TODO: move this file to server/modules/auth/routes/auth/ and add
-//   nitro: {
-//     scanDirs: ['server/modules'],
-//   }
-// to defineNuxtConfig() once the transition to modular monolith starts

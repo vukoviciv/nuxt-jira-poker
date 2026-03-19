@@ -1,9 +1,15 @@
 declare module '#auth-utils' {
   interface User {
-    atlassianId: string | undefined;
-    name: string | undefined;
-    email: string | undefined;
-    avatar: string | undefined;
+    atlassianId?: string;
+    name?: string;
+    email?: string;
+    avatar?: string;
+  }
+
+  interface SecureSessionData {
+    accessToken?: string;
+    refreshToken?: string;
+    tokenExpiresAt?: number;
   }
 }
 
