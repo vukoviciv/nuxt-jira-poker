@@ -46,7 +46,6 @@ const providers = [
     icon: 'i-simple-icons-atlassian',
     onClick: () => {
       window.location.href = '/auth/atlassian';
-      // The server will handle the redirect to the provider and back to the app
     },
   },
 ];
